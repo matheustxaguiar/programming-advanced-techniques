@@ -107,10 +107,14 @@ public class Main {
 
   static void exibirEstatisticas(Arvore<Aluno> arvore) {
     System.out.println("- Total elementos: " + arvore.quantidade_nos(arvore.getRaiz()) + ".\n");
-    System.out.println("- Altura da árvore: " + (arvore.nivel(arvore.getRaiz()) - 1) + ".\n");
+    System.out.println("- Altura da árvore: " + arvore.nivel(arvore.getRaiz()) + ".\n");
     System.out.println("- Menor: " + arvore.menor_elemento(arvore.getRaiz()).getValor() + ".\n");
     System.out.println("- Maior: " + arvore.maior_elemento(arvore.getRaiz()).getValor() + ".\n");
-    System.out.println("- Pior caso: " + arvore.pior_caso(arvore.getRaiz()) + " comparacões.\n");
+    System.out.println("Piores Casos: ");
+    arvore.piorCaso(arvore.getRaiz(), arvore.nivel(arvore.getRaiz()));
+    System.out.println("\n");
+    
+
   } // FIM METODO PARA EXIBIR ESTATISTICAS
 
   //LEITURA DE MATRICULA

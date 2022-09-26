@@ -202,7 +202,7 @@ public class Arvore<T extends Comparable> {
   // METODO QUE RETORNA A ALTURA DA ARVORE
   public int nivel(No<T> atual) {
     if (atual == null)
-      return 0;
+      return -1;
     return (int) Math.max(nivel(atual.getEsquerda()) + 1, nivel(atual.getDireita()) + 1);
   }
 
@@ -216,9 +216,36 @@ public class Arvore<T extends Comparable> {
   }
 
   // METODO QUE RETORNA O PIOR CASO NA QUANTIADADE DE COMPARAÇÕES
-  public int pior_caso(No<T> atual) {
-    return quantidade_nos(atual) + 1;
-  }
+//  public int pior_caso(No<T> atual) {
+//    return quantidade_nos(atual) + 1;
+//  }
+  
+  
+  // METODO QUE RETORNA A ALTURA DA ARVORE
+//  public No<T> piorCaso(No<T> atual, int altura){
+//    //if(atual == null) return;
+//    
+//    while (altura != 1){
+//       piorCaso(atual.getEsquerda(), altura - 1);
+//       piorCaso(atual.getDireita(), altura - 1); 
+//    }
+//    return atual;   
+//}
+  
+  
+    public void piorCaso(No<T> atual, int altura){
+        if(atual == null) return;
+        if(altura == 1){
+            System.out.print(atual.getValor().toString() + " | ");
+        }
+        else if(altura > 1)
+        {
+            piorCaso(atual.getEsquerda(), altura - 1);
+            piorCaso(atual.getDireita(), altura - 1);
+        }
+    }
+
+  
 
   // METODO QUE RETORNA O MENOR VALOR
   public No<T> menor_elemento(No<T> atual) {
