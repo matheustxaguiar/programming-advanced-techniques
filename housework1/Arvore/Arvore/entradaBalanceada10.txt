@@ -1,0 +1,11 @@
+10
+2000000005;Ugus Qawovu;79
+2000000002;Xonev Dejanoe;21
+2000000001;Qov Upipazea;48
+2000000003;Ropouezi Inoeig;51
+2000000004;Jinabu Buku;75
+2000000008;Lefu Qek;85
+2000000006;Vigaxila Riuteye;79
+2000000007;Mida Besoweh;53
+2000000009;Yaxuaruu Sakiuwa;51
+2000000010;Xenipido Cezucage;48

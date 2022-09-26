@@ -22,9 +22,13 @@ public class Main {
   public static void main(String[] args) throws Exception {
     Arvore<Aluno> arvore = new Arvore<Aluno>();
     lerArquivo(arvore);
-
-    // MENU
+    
     Scanner menu = new Scanner(System.in);
+    int opcao;
+    
+    do{
+    
+    // MENU
     System.out.print("##--Sistema Academico--##\n\n");
     System.out.print("|------------------------------------------------|\n");
     System.out.print("| Opção 1 - Exibir estatísticas                  |\n");
@@ -35,7 +39,7 @@ public class Main {
     System.out.print("|------------------------------------------------|\n");
     System.out.print("Digite uma opção: ");
 
-    int opcao = menu.nextInt();
+    opcao = menu.nextInt();
 
     switch (opcao) {
       case 1:
@@ -45,18 +49,21 @@ public class Main {
 
       case 2:
         System.out.print("\nOpção Efetuar busca por matrícula Selecionada\n\n");
-        buscarMatricula(lerMatricula(), arvore);
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Insira a matricula que deseja buscar: ");
+        int matricula = scan.nextInt();
+        scan.close();
+        buscarMatricula(matricula, arvore);
         break;
 
       case 3:
         System.out.print("\nOpção Excluir por matrícula Selecionada\n");
-        excluirMatricula(lerMatricula(), arvore);
+        //excluirMatricula(lerMatricula(), arvore);
 
         break;
 
       default:
         System.out.print("\nOpção Inválida!");
-
         break;
 
       case 4:
@@ -69,7 +76,9 @@ public class Main {
         menu.close();
         break;
     }
-
+    
+    }while(opcao != 5);
+    
   }
 
   // BUSCA POR MATRICULA
@@ -96,20 +105,20 @@ public class Main {
 
   static void exibirEstatisticas(Arvore<Aluno> arvore) {
     System.out.println("- Total elementos: " + arvore.quantidade_nos(arvore.getRaiz()) + ".\n");
-    System.out.println("- Altura da árvore: " + arvore.nivel(arvore.getRaiz()) + ".\n");
+    System.out.println("- Altura da árvore: " + (arvore.nivel(arvore.getRaiz()) - 1) + ".\n");
     System.out.println("- Menor: " + arvore.menor_elemento(arvore.getRaiz()).getValor() + ".\n");
     System.out.println("- Maior: " + arvore.maior_elemento(arvore.getRaiz()).getValor() + ".\n");
     System.out.println("- Pior caso: " + arvore.pior_caso(arvore.getRaiz()) + " comparacões.\n");
   } // FIM METODO PARA EXIBIR ESTATISTICAS
 
-  // LEITURA DE MATRICULA
-  static int lerMatricula() {
-    Scanner scan = new Scanner(System.in);
-    System.out.print("Insira a matricula que deseja buscar: ");
-    int matricula = scan.nextInt();
-    scan.close();
-    return matricula;
-  } // FIM METODO LER MATRICULA
+  //LEITURA DE MATRICULA
+  //static int lerMatricula() {
+//    Scanner scan = new Scanner(System.in);
+//    System.out.print("Insira a matricula que deseja buscar: ");
+//    int matricula = scan.nextInt();
+//    scan.close();
+//    return matricula;
+//  } // FIM METODO LER MATRICULA
 
   // PROCEDIMENTO DE INCLUIR ALUNO
   static void incluirAluno(Arvore<Aluno> arvore) {
@@ -133,7 +142,6 @@ public class Main {
     if (atual != null) {
       sairEmOrdem(atual.getEsquerda());
       escreverArquivo(atual.getValor().toString());
-      System.out.println(atual.getValor());
       sairEmOrdem(atual.getDireita());
     }
   }
@@ -153,7 +161,7 @@ public class Main {
     String line = "";
     String splitBy = ";";
     try {
-      BufferedReader br = new BufferedReader(new FileReader("./entradaOrdenada200.txt"));
+      BufferedReader br = new BufferedReader(new FileReader("./entradaBalanceada10.txt"));
       
       String inutil = br.readLine();
       
