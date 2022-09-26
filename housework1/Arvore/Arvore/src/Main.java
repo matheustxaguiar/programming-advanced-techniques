@@ -98,6 +98,8 @@ public class Main {
   static void excluirMatricula(int matricula, Arvore<Aluno> arvore) {
     try {
       arvore.remover(new Aluno(matricula, "", 0));
+      System.out.println("Matricula excluida com sucesso!\n");
+
     } catch (NullPointerException e) {
       System.out.println("Aluno não encontrado para exclusão");
     }
