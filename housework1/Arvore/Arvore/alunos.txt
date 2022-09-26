@@ -1,0 +1,7 @@
+5;joao;7
+6;ana;10
+7;rafael;6
+4;thiago;9
+2;arthur;10
+9;breno;0
+1;Matheus;9
