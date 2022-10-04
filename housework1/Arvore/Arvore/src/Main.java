@@ -13,8 +13,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
-import java.io.File;
-import java.nio.file.*;
 
 
 public class Main {
@@ -49,10 +47,8 @@ public class Main {
 
       case 2:
         System.out.print("\nOpção Efetuar busca por matrícula Selecionada\n\n");
-        Scanner scan = new Scanner(System.in);
         System.out.print("Insira a matricula que deseja buscar: ");
-        int matricula = scan.nextInt();
-        scan.close();
+        int matricula = menu.nextInt();
         buscarMatricula(matricula, arvore);
         break;
 

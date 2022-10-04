@@ -10,7 +10,7 @@
 import java.util.ArrayList;
 
 public class Arvore<T extends Comparable> {
-  private No<T> raiz;
+  No<T> raiz;
 
   public Arvore() {
     this.raiz = null;
@@ -21,32 +21,76 @@ public class Arvore<T extends Comparable> {
     return raiz;
   }
 
-  // METODO QUE ADICIONA UM NO A ARVORE
-  public void adicionar(T valor) {
-    No<T> novoElemento = new No<T>(valor);
-    if (raiz == null) {
-      this.raiz = novoElemento;
-    } else {
-      No<T> atual = this.raiz;
-      while (true) {
-        if (novoElemento.getValor().compareTo(atual.getValor()) == -1) {
-          if (atual.getEsquerda() != null) {
-            atual = atual.getEsquerda();
-          } else {
-            atual.setEsquerda(novoElemento);
-            break;
+  
+ // METODO QUE ADICIONA UM NO A ARVORE
+  public void adicionar(T novoValor){
+        No<T> novoNo = new No<T>(novoValor);
+        if(this.raiz==null)
+            this.raiz= novoNo;
+        else
+            this.raiz = adicionarNaArvore(this.raiz, novoNo);
+    }
+  
+
+  protected No<T> adicionarNaArvore(No<T> atual, No<T> novoElemento) {
+      if(novoElemento.getValor().compareTo(atual.getValor()) < 0){
+          if (atual.getEsquerda() == null) {
+              atual.setEsquerda(novoElemento);
           }
-        } else { // se for maior ou igual
-          if (atual.getDireita() != null) {
-            atual = atual.getDireita();
-          } else {
-            atual.setDireita(novoElemento);
-            break;
+          else{
+              atual.setEsquerda(adicionarNaArvore(atual.getEsquerda(), novoElemento));
           }
+      }
+      else{
+      if (atual.getDireita() == null){
+          atual.setDireita(novoElemento);
+      } else {
+          atual.setDireita(adicionarNaArvore(atual.getDireita(), novoElemento));  
         }
       }
-    }
+      return atual;
   }
+
+  
+  
+  
+  
+  
+//  // METODO QUE ADICIONA UM NO A ARVORE
+//  public void adicionarElemento(T novoValor){
+//        No<T> novoNo = new No<T>(novoValor);
+//        if(this.raiz==null)
+//            this.raiz= novoNo;
+//        else
+//            adicionar(novoNo);
+//    }
+//  
+//  
+//  
+//  public void adicionar(No<T> novoElemento) {
+//    if (raiz == null) {
+//      this.raiz = novoElemento;
+//    } else {
+//      No<T> atual = this.raiz;
+//      while (true) {
+//        if (novoElemento.getValor().compareTo(atual.getValor()) == -1) {
+//          if (atual.getEsquerda() != null) {
+//            atual = atual.getEsquerda();
+//          } else {
+//            atual.setEsquerda(novoElemento);
+//            break;
+//          }
+//        } else { // se for maior ou igual
+//          if (atual.getDireita() != null) {
+//            atual = atual.getDireita();
+//          } else {
+//            atual.setDireita(novoElemento);
+//            break;
+//          }
+//        }
+//      }
+//    }
+//  }
 
   // METODO QUE IMPRIME EM ORDEM OS NOS
   public void emOrdem(No<T> atual) {
@@ -268,6 +312,7 @@ public class Arvore<T extends Comparable> {
       menor_elemento(atual);
     }
   }
+ 
 
 }
 
