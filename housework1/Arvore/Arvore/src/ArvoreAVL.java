@@ -28,6 +28,8 @@ public class ArvoreAVL<T extends Comparable> extends Arvore<T>{
         }
         
         return raiz;
+
+
          // SOBRESCRVER TUDO DE FORMA RECURSSIVA
 //        if (raiz == null) {
 //         this.raiz = novoElemento;
@@ -53,8 +55,20 @@ public class ArvoreAVL<T extends Comparable> extends Arvore<T>{
 //        }
   }
     
+   private No<T> rotacaoEsquerda(No<T> raiz){
+       return raiz;
+   }
+   
+   private No<T> rotacaoDireita(No<T> raiz){
+       return raiz;
+   }
+    
+   private No<T> rotacaoDireitaEsquerda(No<T> raiz){
+       return raiz;
+   }   
+   
    public int fatorBalanceamento(){
-       return nivel(this.raiz.getDireita()) - nivel(this.raiz.getEsquerda());
+       return super.nivel(this.raiz.getDireita()) - super.nivel(this.raiz.getEsquerda());
    }
     
     // Remocao
