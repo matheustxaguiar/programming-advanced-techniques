@@ -18,14 +18,18 @@ import java.util.Scanner;
 public class Main {
 
   public static void main(String[] args) throws Exception {
-    Arvore<Aluno> arvore = new Arvore<Aluno>();
+    //Arvore<Aluno> arvore = new Arvore<Aluno>();
+    ArvoreAVL<Aluno> arvore = new ArvoreAVL<Aluno>();
     lerArquivo(arvore);
     
     Scanner menu = new Scanner(System.in);
     int opcao;
+
     
     do{
-    
+        
+
+
     // MENU
     System.out.print("##--Sistema Academico--##\n\n");
     System.out.print("|------------------------------------------------|\n");
@@ -38,6 +42,7 @@ public class Main {
     System.out.print("Digite uma opção: ");
 
     opcao = menu.nextInt();
+
 
     switch (opcao) {
       case 1:
@@ -54,7 +59,8 @@ public class Main {
 
       case 3:
         System.out.print("\nOpção Excluir por matrícula Selecionada\n");
-        //excluirMatricula(lerMatricula(), arvore);
+        int matri = menu.nextInt();
+        excluirMatricula(matri, arvore);
 
         break;
 
@@ -64,6 +70,7 @@ public class Main {
 
       case 4:
         incluirAluno(arvore);
+        exibirEstatisticas(arvore);
         break;
 
       case 5:
@@ -135,6 +142,8 @@ public class Main {
     System.out.print("\nnota: ");
     int nota = scan2.nextInt();
     scan.close();
+    scan1.close();
+    scan2.close();
 
     arvore.adicionar(new Aluno(matricula, nome, nota));
   }
@@ -163,7 +172,7 @@ public class Main {
     String line = "";
     String splitBy = ";";
     try {
-      BufferedReader br = new BufferedReader(new FileReader("./entradaBalanceada10.txt"));
+      BufferedReader br = new BufferedReader(new FileReader("./entradaAleatoria100.txt"));
       
       String inutil = br.readLine();
       

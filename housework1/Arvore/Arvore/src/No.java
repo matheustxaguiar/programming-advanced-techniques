@@ -41,4 +41,9 @@ public class No<T> {
     public void setDireita (No<T> direita) {
         this.direita = direita;
     }  
+    
+//    public int fatorBalanceamento(){;
+//       return nivel(this.raiz.getDireita()) - super.nivel(this.raiz.getEsquerda());
+//   }
+    
 }

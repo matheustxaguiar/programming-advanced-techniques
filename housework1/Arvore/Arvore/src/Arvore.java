@@ -5,7 +5,7 @@
 
 /**
  *
- * @author Matheus Aguiar
+ * @author Matheus Aguiar e Arthur Delpupo
  */
 import java.util.ArrayList;
 

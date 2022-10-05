@@ -4,7 +4,7 @@
  */
 /**
  *
- * @author Matheus Aguiar
+ * @author Arthur Delpupo e Matheus Aguiar
  */
 public class Aluno implements Comparable<Aluno> {
     private int matricula;
