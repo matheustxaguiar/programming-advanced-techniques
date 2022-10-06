@@ -24,25 +24,12 @@ public class Main {
     
     Scanner menu = new Scanner(System.in);
     int opcao;
-
     
     do{
-        
-
-
     // MENU
-    System.out.print("##--Sistema Academico--##\n\n");
-    System.out.print("|------------------------------------------------|\n");
-    System.out.print("| Opção 1 - Exibir estatísticas                  |\n");
-    System.out.print("| Opção 2 - Efetuar busca por matrícula          |\n");
-    System.out.print("| Opção 3 - Excluir por matrícula                |\n");
-    System.out.print("| Opção 4 - Incluir aluno                        |\n");
-    System.out.print("| Opção 5 - Sair                                 |\n");
-    System.out.print("|------------------------------------------------|\n");
-    System.out.print("Digite uma opção: ");
-
+    menu();
+    System.out.print("- DIGITE UMA OPÇÃO:");
     opcao = menu.nextInt();
-
 
     switch (opcao) {
       case 1:
@@ -61,7 +48,6 @@ public class Main {
         System.out.print("\nOpção Excluir por matrícula Selecionada\n");
         int matri = menu.nextInt();
         excluirMatricula(matri, arvore);
-
         break;
 
       default:
@@ -69,16 +55,17 @@ public class Main {
         break;
 
       case 4:
+        menu.nextLine();
         incluirAluno(arvore);
-        exibirEstatisticas(arvore);
         break;
 
       case 5:
         sairEmOrdem(arvore.getRaiz());
         System.out.print("\nAté logo!");
-        menu.close();
+        //menu.close();
         break;
     }
+
     
     }while(opcao != 5);
     
@@ -120,31 +107,41 @@ public class Main {
 
   } // FIM METODO PARA EXIBIR ESTATISTICAS
 
-  //LEITURA DE MATRICULA
-  //static int lerMatricula() {
-//    Scanner scan = new Scanner(System.in);
-//    System.out.print("Insira a matricula que deseja buscar: ");
-//    int matricula = scan.nextInt();
-//    scan.close();
-//    return matricula;
-//  } // FIM METODO LER MATRICULA
+  
+  static void menu(){
+    System.out.print("##--Sistema Academico--##\n\n");
+    System.out.print("|------------------------------------------------|\n");
+    System.out.print("| Opção 1 - Exibir estatísticas                  |\n");
+    System.out.print("| Opção 2 - Efetuar busca por matrícula          |\n");
+    System.out.print("| Opção 3 - Excluir por matrícula                |\n");
+    System.out.print("| Opção 4 - Incluir aluno                        |\n");
+    System.out.print("| Opção 5 - Sair                                 |\n");
+    System.out.print("|------------------------------------------------|\n");
+  }
+  
+  
 
   // PROCEDIMENTO DE INCLUIR ALUNO
   static void incluirAluno(Arvore<Aluno> arvore) {
-    Scanner scan = new Scanner(System.in);
-    Scanner scan1 = new Scanner(System.in);
-    Scanner scan2 = new Scanner(System.in);
-
-    System.out.print("\n matricula: ");
-    int matricula = scan.nextInt();
-    System.out.print("\nnome: ");
-    String nome = scan1.nextLine();
-    System.out.print("\nnota: ");
-    int nota = scan2.nextInt();
-    scan.close();
-    scan1.close();
-    scan2.close();
-
+      int matricula;
+      String nome;
+      int nota;
+      try (Scanner scan = new Scanner(System.in)) {
+          System.out.print("\nmatricula: ");
+          matricula = scan.nextInt();
+          scan.nextLine();
+          
+          System.out.print("\nnome: ");
+          nome = scan.nextLine();
+          
+          System.out.print("\nnota: ");
+          nota = scan.nextInt();
+          scan.nextLine();
+          
+          scan.close();
+      }
+    
+  
     arvore.adicionar(new Aluno(matricula, nome, nota));
   }
 
